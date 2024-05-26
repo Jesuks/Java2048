@@ -7,5 +7,7 @@ module holyg.project2048 {
     opens controller to javafx.fxml;
     exports controller;
 
+    opens LoginController to javafx.fxml;
+    exports LoginController;
     exports Test;
 }
