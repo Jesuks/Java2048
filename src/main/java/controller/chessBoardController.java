@@ -2,6 +2,8 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -28,14 +30,64 @@ public class chessBoardController {
         createChessBoard();
         updateBoard();
     }
+
+    //
+
+    @FXML
+    public RadioButton rb1 ;
+    @FXML
+    public RadioButton rb2 ;
+    @FXML
+    public RadioButton rb3 ;
+    @FXML
+    public ToggleGroup toggleGroup;
+
+
+
+    //
     //初始化棋盘。添加键盘监听
+    @FXML
     private void updateBoard() {
-        for (int row = 0; row < 4; row++) {
-            for (int col = 0; col < 4; col++) {
-                String s= String.valueOf(chessboard[row][col]);
-                Label label =(Label)gridPane.getChildren().get(row * 4 + col);
-                label.setText(s);
-                label.setStyle(Style.stlye(s));
+        toggleGroup = new ToggleGroup();
+        rb1.setToggleGroup(toggleGroup);
+        rb2.setToggleGroup(toggleGroup);
+        rb3.setToggleGroup(toggleGroup);
+
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                RadioButton selectedRadioButton = (RadioButton) newValue;
+                String selectedText = selectedRadioButton.getText();
+
+            }
+        });
+        if(rb1.isSelected()){
+            for (int row = 0; row < 4; row++) {
+                for (int col = 0; col < 4; col++) {
+                    String s= String.valueOf(chessboard[row][col]);
+                    Label label =(Label)gridPane.getChildren().get(row * 4 + col);
+                    label.setText(s);
+                    label.setStyle(Style1.stlye(s));
+                }
+            }
+        }
+        if(rb2.isSelected()){
+            for (int row = 0; row < 4; row++) {
+                for (int col = 0; col < 4; col++) {
+                    String s= String.valueOf(chessboard[row][col]);
+                    Label label =(Label)gridPane.getChildren().get(row * 4 + col);
+                    label.setText(s);
+                    label.setStyle(Style2.stlye(s));
+                }
+            }
+        }
+        if(rb3.isSelected()){
+            for (int row = 0; row < 4; row++) {
+                for (int col = 0; col < 4; col++) {
+                    String s= String.valueOf(chessboard[row][col]);
+                    Label label =(Label)gridPane.getChildren().get(row * 4 + col);
+                    label.setText(s);
+                    label.setStyle(Style3.stlye(s));
+                }
             }
         }
         scoreLable.setText("Score : "+score);
