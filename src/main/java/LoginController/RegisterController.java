@@ -1,6 +1,9 @@
 package LoginController;
 
+import controller.UserData;
+import controller.UserDataManager;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -11,44 +14,29 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private PasswordField confirmPasswordField;
-
-    private MainController mainController;
-
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
-
+    private UserData currentUser;
     @FXML
     private void handleRegister() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String confirmPassword = confirmPasswordField.getText();
-
-        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            usernameField.setStyle("-fx-border-color: red;");
-            passwordField.setStyle("-fx-border-color: red;");
-            confirmPasswordField.setStyle("-fx-border-color: red;");
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Registration Error", "Username and password cannot be empty");
             return;
         }
-
-        if (!password.equals(confirmPassword)) {
-            passwordField.setStyle("-fx-border-color: red;");
-            confirmPasswordField.setStyle("-fx-border-color: red;");
-            return;
-        }
-
-        if (UserManager.register(username, password)) {
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.close();
-        } else {
-            usernameField.setStyle("-fx-border-color: red;");
-        }
+        currentUser = new UserData(username, password);
+        UserDataManager.saveUserData(currentUser);
+        showAlert("Registration Success", "User registered successfully");
     }
-
     @FXML
     private void handleCancel() {
         Stage stage = (Stage) usernameField.getScene().getWindow();
         stage.close();
+    }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

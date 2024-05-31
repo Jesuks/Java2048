@@ -1,20 +1,31 @@
 package controller;
 
+import LoginController.LoginController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class chessBoardController {
 
-
-
     @FXML
     public GridPane gridPane;
+    @FXML
+    public Pane pane;
     @FXML
     public Label scoreLable;
     @FXML
@@ -26,16 +37,32 @@ public class chessBoardController {
     @FXML
     public void initialize() {
         createChessBoard();
+        loadUserData();
         updateBoard();
     }
+
+    public void newGame(){
+        steps=-1;
+        score=0;
+        createChessBoard();
+        updateBoard();
+    }
+
+
     //初始化棋盘。添加键盘监听
     private void updateBoard() {
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
-                String s= String.valueOf(chessboard[row][col]);
-                Label label =(Label)gridPane.getChildren().get(row * 4 + col);
-                label.setText(s);
-                label.setStyle(Style.stlye(s));
+                String s = String.valueOf(chessboard[row][col]);
+                Label label = (Label) gridPane.getChildren().get(row * 4 + col);
+                if (s.equals("0")) {
+                    label.setText("");
+                    label.setStyle("-fx-background-color:#FFF5EE;" +
+                            "-fx-background-radius: 3;");
+                } else {
+                    label.setText(s);
+                    label.setStyle(Style.stlye(s));
+                }
             }
         }
         scoreLable.setText("Score : "+score);
@@ -43,8 +70,6 @@ public class chessBoardController {
         stepLable.setText("Steps : "+steps);
     }
     //根据当前数组，更新棋盘方块
-
-
     public  boolean ifContinue() {
         int rows = chessboard.length;
         int cols = chessboard[0].length;
@@ -95,9 +120,23 @@ public class chessBoardController {
             this.y = y;
         }
     }
-
-    public void endGame(){
+    Stage stage;
+    Scene scene;
+    Parent root;
+    public void endGame() {
         System.out.println("end!");
+        // 弹出新的窗口
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/gameOver.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Game Over");
+            stage.initModality(Modality.APPLICATION_MODAL); // 阻塞主窗口
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void createChessBoard() {
@@ -105,6 +144,35 @@ public class chessBoardController {
         addRandom();
         addRandom();
     }
+
+    public void loadUserData(){
+        if (UserData.currentUser!=null){
+            score=UserData.currentUser.score;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    chessboard[i][j]=UserData.currentUser.gameState[i][j];
+                }
+            }
+        }
+    }
+
+    public void saveGame(){
+        if (UserData.currentUser!=null) {
+            UserData.currentUser.score = score;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    UserData.currentUser.gameState[i][j] = chessboard[i][j];
+                }
+            }
+            UserDataManager.saveUserData(UserData.currentUser);
+            showAlert("Save successfully", "Save successfully");
+        }
+        else {
+
+        }
+    }
+
+
 
     @FXML
     private void handleKeyPress(KeyEvent event) {
@@ -250,5 +318,13 @@ public class chessBoardController {
             endGame();
         }
     }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 }
+

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="563.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.chessBoardController">
+<Pane fx:id="pane" prefHeight="595.0" prefWidth="991.0" style="-fx-background-color: #FFFFF0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.chessBoardController">
    <children>
-      <GridPane fx:id="gridPane" focusTraversable="true" hgap="10.0" layoutX="298.0" layoutY="149.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" prefHeight="400.0" prefWidth="600.0" vgap="10.0">
+      <GridPane fx:id="gridPane" focusTraversable="true" hgap="10.0" layoutX="424.0" layoutY="143.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" prefHeight="429.0" prefWidth="517.0" style="-fx-background-color: #DCDCDC;" vgap="10.0">
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
             <ColumnConstraints minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
@@ -23,25 +25,28 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="1" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="2" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="3" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.rowIndex="3" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" text="1" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="113.0" prefWidth="148.0" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="2" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" focusTraversable="false" prefHeight="146.0" prefWidth="213.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </GridPane>
-      <GridPane layoutX="41.0" layoutY="366.0" prefHeight="129.0" prefWidth="183.0">
+      <GridPane hgap="5.0" layoutX="83.0" layoutY="385.0" prefHeight="129.0" prefWidth="183.0" vgap="5.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -52,13 +57,30 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveUp" prefHeight="91.0" prefWidth="97.0" text="UP" GridPane.columnIndex="1" />
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveLeft" prefHeight="67.0" prefWidth="79.0" text="LEFT" GridPane.rowIndex="1" />
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveRight" prefHeight="61.0" prefWidth="93.0" text="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveDown" prefHeight="63.0" prefWidth="91.0" text="DOWN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveUp" prefHeight="91.0" prefWidth="97.0" style="-fx-background-color: #DEB887;" text="UP" GridPane.columnIndex="1" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveLeft" prefHeight="67.0" prefWidth="79.0" style="-fx-background-color: #DEB887;" text="LEFT" GridPane.rowIndex="1" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveRight" prefHeight="61.0" prefWidth="93.0" style="-fx-background-color: #DEB887;" text="RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#moveDown" prefHeight="63.0" prefWidth="91.0" style="-fx-background-color: #DEB887;" text="DOWN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label fx:id="scoreLable" alignment="CENTER" layoutX="56.0" layoutY="97.0" prefHeight="65.0" prefWidth="154.0" text="Score : 0" textAlignment="CENTER" />
-      <Label fx:id="stepLable" alignment="CENTER" layoutX="84.0" layoutY="60.0" prefHeight="37.0" prefWidth="98.0" text="Steps : 0" textAlignment="CENTER" />
+      <Label fx:id="scoreLable" alignment="CENTER" layoutX="521.0" layoutY="82.0" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #F4A460;" text="Score : 0" textAlignment="CENTER" />
+      <Label fx:id="stepLable" alignment="CENTER" layoutX="741.0" layoutY="82.0" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #F4A460;" text="Steps : 0" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="43.0" layoutY="34.0" prefHeight="69.0" prefWidth="263.0" style="-fx-font-family: &quot;Verdana&quot;;" text="2048" textAlignment="CENTER" textFill="#268099">
+         <font>
+            <Font name="Calibri Light Italic" size="53.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLable1" alignment="CENTER" layoutX="741.0" layoutY="31.0" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #F4A460;" text="Time：" textAlignment="CENTER" />
+      <Label fx:id="scoreLable2" alignment="CENTER" layoutX="521.0" layoutY="31.0" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #F4A460;" text="Highst Score : 0" textAlignment="CENTER" />
+      <Button fx:id="newGameLable" alignment="CENTER" layoutX="96.0" layoutY="170.0" mnemonicParsing="false" onAction="#newGame" prefHeight="53.0" prefWidth="157.0" style="-fx-background-color: #d3d7d4;" text="New Game" textAlignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveGameButton" alignment="CENTER" layoutX="96.0" layoutY="253.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="53.0" prefWidth="157.0" style="-fx-background-color: #d3d7d4;" text="Save Game" textAlignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
