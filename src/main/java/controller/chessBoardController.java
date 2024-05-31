@@ -158,6 +158,47 @@ public class chessBoardController {
                 }
             }
         }
+        if(radioMenuItem4.isSelected()) {
+            pane.setStyle("-fx-background-image: url('file:src/main/resources/images/WaterLily.jpg');" +
+                    "-fx-background-size: cover;" +
+                    "-fx-background-position: center center;" +
+                    "-fx-background-repeat: no-repeat;");
+
+            for (int row = 0; row < 4; row++) {
+                for (int col = 0; col < 4; col++) {
+                    String s = String.valueOf(chessboard[row][col]);
+                    Label label = (Label) gridPane.getChildren().get(row * 4 + col);
+                    if (s.equals("0")) {
+                        label.setText("");
+                        label.setStyle("-fx-background-color:#FFF5EE;" +
+                                "-fx-background-radius: 3;");
+                    } else {
+                        label.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);" + // 半透明背景
+                                "-fx-text-fill: white;" + // 白色字体
+                                "-fx-padding: 10;" + // 内边距
+                                "-fx-background-radius: 5;" ); // 圆角
+
+                    }
+                }
+            }
+            for (int row = 0; row < 4; row++) {
+                for (int col = 0; col < 4; col++) {
+                    String s = String.valueOf(chessboard[row][col]);
+                    Label label = (Label) gridPane.getChildren().get(row * 4 + col);
+
+
+                }
+
+
+            }
+        }
+        if(radioMenuItem5.isSelected()){
+
+        }
+        if(radioMenuItem6.isSelected()){
+
+        }
+
 
         scoreLable.setText("Score : "+score);
         steps++;
