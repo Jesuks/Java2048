@@ -1,171 +1,55 @@
 package controller;
 
-import LoginController.LoginController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class chessBoardController {
 
+
+
     @FXML
     public GridPane gridPane;
-    @FXML
-    public Pane pane;
     @FXML
     public Label scoreLable;
     @FXML
     public Label stepLable;
     int score=0;
     int steps=-1;
+
+    public int[][] getChessboard() {
+        return chessboard;
+    }
+
     private int[][] chessboard = new int[4][4];
     private Random random = new Random();
     @FXML
     public void initialize() {
         createChessBoard();
-        loadUserData();
         updateBoard();
     }
-
-    public void newGame(){
-        steps=-1;
-        score=0;
-        createChessBoard();
-        updateBoard();
-    }
-
-
-    @FXML
-    private RadioMenuItem radioMenuItem1;
-    @FXML
-    private RadioMenuItem radioMenuItem2;
-    @FXML
-    private RadioMenuItem radioMenuItem3;
-    @FXML
-    private RadioMenuItem radioMenuItem4;
-    @FXML
-    private RadioMenuItem radioMenuItem5;
-    @FXML
-    private RadioMenuItem radioMenuItem6;
-    @FXML
-    private RadioMenuItem radioMenuItem7;
-    @FXML
-    private ToggleGroup toggleGroup;
-
     //初始化棋盘。添加键盘监听
-    @FXML
     private void updateBoard() {
-        toggleGroup = new ToggleGroup();
-        radioMenuItem1.setToggleGroup(toggleGroup);
-        radioMenuItem2.setToggleGroup(toggleGroup);
-        radioMenuItem3.setToggleGroup(toggleGroup);
-        radioMenuItem4.setToggleGroup(toggleGroup);
-        radioMenuItem5.setToggleGroup(toggleGroup);
-        radioMenuItem6.setToggleGroup(toggleGroup);
-        radioMenuItem7.setToggleGroup(toggleGroup);
-        toggleGroup = new ToggleGroup();
-
-
-        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                RadioButton selectedRadioButton = (RadioButton) newValue;
-                String selectedText = selectedRadioButton.getText();
-
-            }
-        });
-
-        if (!radioMenuItem1.isSelected() && !radioMenuItem2.isSelected() && !radioMenuItem3.isSelected() && !radioMenuItem4.isSelected() && !radioMenuItem5.isSelected() && !radioMenuItem6.isSelected() && !radioMenuItem7.isSelected()){
-            radioMenuItem7.setSelected(true);
-        }
-
-        if(radioMenuItem7.isSelected()){
-            for (int row = 0; row < 4; row++) {
-                for (int col = 0; col < 4; col++) {
-                    String s = String.valueOf(chessboard[row][col]);
-                    Label label = (Label) gridPane.getChildren().get(row * 4 + col);
-                    if (s.equals("0")) {
-                        label.setText("");
-                        label.setStyle("-fx-background-color:#FFF5EE;" +
-                                "-fx-background-radius: 3;");
-                    } else {
-                        label.setText(s);
-                        label.setStyle(Style.style(s));
-                    }
-                }
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                String s= String.valueOf(chessboard[row][col]);
+                Label label =(Label)gridPane.getChildren().get(row * 4 + col);
+                label.setText(s);
+                label.setStyle(Style.stlye(s));
             }
         }
-        if(radioMenuItem1.isSelected()){
-            pane.setStyle("-fx-backgroud-color:#FF5733");
-            for (int row = 0; row < 4; row++) {
-                for (int col = 0; col < 4; col++) {
-                    String s = String.valueOf(chessboard[row][col]);
-                    Label label = (Label) gridPane.getChildren().get(row * 4 + col);
-                    if (s.equals("0")) {
-                        label.setText("");
-                        label.setStyle("-fx-background-color:#FFF5EE;" +
-                                "-fx-background-radius: 3;");
-                    } else {
-                        label.setText(s);
-                        label.setStyle(Style1.style(s));
-                    }
-                }
-            }
-        }
-        if(radioMenuItem2.isSelected()){
-            pane.setStyle("-fx-backgroud-color:#3498DB");
-            for (int row = 0; row < 4; row++) {
-                for (int col = 0; col < 4; col++) {
-                    String s = String.valueOf(chessboard[row][col]);
-                    Label label = (Label) gridPane.getChildren().get(row * 4 + col);
-                    if (s.equals("0")) {
-                        label.setText("");
-                        label.setStyle("-fx-background-color:#FFF5EE;" +
-                                "-fx-background-radius: 3;");
-                    } else {
-                        label.setText(s);
-                        label.setStyle(Style2.style(s));
-                    }
-                }
-            }
-        }
-        if(radioMenuItem3.isSelected()){
-            pane.setStyle("-fx-backgroud-color:#2C3E50");
-            for (int row = 0; row < 4; row++) {
-                for (int col = 0; col < 4; col++) {
-                    String s = String.valueOf(chessboard[row][col]);
-                    Label label = (Label) gridPane.getChildren().get(row * 4 + col);
-                    if (s.equals("0")) {
-                        label.setText("");
-                        label.setStyle("-fx-background-color:#FFF5EE;" +
-                                "-fx-background-radius: 3;");
-                    } else {
-                        label.setText(s);
-                        label.setStyle(Style3.style(s));
-                    }
-                }
-            }
-        }
-
         scoreLable.setText("Score : "+score);
         steps++;
         stepLable.setText("Steps : "+steps);
     }
-
-
     //根据当前数组，更新棋盘方块
+
+
     public  boolean ifContinue() {
         int rows = chessboard.length;
         int cols = chessboard[0].length;
@@ -216,23 +100,9 @@ public class chessBoardController {
             this.y = y;
         }
     }
-    Stage stage;
-    Scene scene;
-    Parent root;
-    public void endGame() {
+
+    public void endGame(){
         System.out.println("end!");
-        // 弹出新的窗口
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/gameOver.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Game Over");
-            stage.initModality(Modality.APPLICATION_MODAL); // 阻塞主窗口
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void createChessBoard() {
@@ -240,35 +110,6 @@ public class chessBoardController {
         addRandom();
         addRandom();
     }
-
-    public void loadUserData(){
-        if (UserData.currentUser!=null){
-            score=UserData.currentUser.score;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    chessboard[i][j]=UserData.currentUser.gameState[i][j];
-                }
-            }
-        }
-    }
-
-    public void saveGame(){
-        if (UserData.currentUser!=null) {
-            UserData.currentUser.score = score;
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    UserData.currentUser.gameState[i][j] = chessboard[i][j];
-                }
-            }
-            UserDataManager.saveUserData(UserData.currentUser);
-            showAlert("Save successfully", "Save successfully");
-        }
-        else {
-
-        }
-    }
-
-
 
     @FXML
     private void handleKeyPress(KeyEvent event) {
@@ -414,13 +255,5 @@ public class chessBoardController {
             endGame();
         }
     }
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 
 }
-

@@ -17,7 +17,7 @@ public class LogInPageController {
     private Parent root;
 
     public void switchToUserPage(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/fxml/UserPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
