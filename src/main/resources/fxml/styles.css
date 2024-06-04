@@ -1,0 +1,139 @@
+/* 导入Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+/* 背景渐变色 */
+.root {
+    background: linear-gradient(to right, rgb(0, 159, 255), rgb(236, 47, 75));
+}
+
+/* 2048 标题样式 */
+.title-label {
+ -fx-font-family: 'Pacifico', cursive;
+    -fx-font-size: 78px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.8) , 0,0,0,1 );
+}
+
+/* 按钮样式 */
+/* styles.css */
+.root {
+    -fx-background-color: linear-gradient(to right, rgb(198, 255, 221), rgb(251, 215, 134), rgb(247, 121, 125));
+
+
+}
+
+.login-button {
+    -fx-font-weight: bold;
+    -fx-font-family: 'Indie Flower', cursive;
+    -fx-background-color:#66CCCC;
+    -fx-text-fill: white;
+}
+
+.register-button {
+    -fx-font-weight: bold;
+    -fx-font-family: 'Indie Flower', cursive;
+    -fx-background-color: #FF9933;
+    -fx-text-fill: white;
+}
+
+.guest-button {
+    -fx-font-weight: bold;
+    -fx-font-family: 'Indie Flower', cursive;
+    -fx-background-color: #FFCCCC;
+    -fx-text-fill: white;
+}
+
+.custom-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.custom-label {
+    -fx-font-family: 'Comic Sans MS', cursive, sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 4, 0.0, 0.0, 1.0);
+}
+
+/* 文本框样式 */
+.custom-textfield {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-font-size: 16px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* 按钮样式 */
+.login-button {
+    -fx-background-color: #66CCCC;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-padding: 10 20 10 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.6), 3, 0.0, 0.0, 1.0);
+}
+
+.cancel-button {
+    -fx-background-color: #FF6666;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-padding: 10 20 10 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.6), 3, 0.0, 0.0, 1.0);
+}
+.gameover-label {
+    -fx-font-family: 'Comic Sans MS', cursive, sans-serif;
+
+    -fx-text-fill: #ffbe9d;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 4, 0.0, 0.0, 1.0);
+}
+/* custom-alert.css */
+
+.alert {
+    -fx-background-color: #fff2df;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+}
+
+.dialog-pane {
+    -fx-font-family: 'Comic Sans MS', cursive, sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button-bar > .button {
+    -fx-background-color: #eedeb0;
+    -fx-text-fill: white;
+    -fx-font-family: 'Comic Sans MS', cursive, sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #fff2df;
+    -fx-padding: 10;
+    -fx-border-radius: 10 10 0 0;
+}
+
+.dialog-pane .content {
+    -fx-background-color: #fff2df;
+    -fx-padding: 20;
+    -fx-border-radius: 0 0 10 10;
+}

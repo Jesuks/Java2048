@@ -7,7 +7,9 @@ public class UserData implements Serializable {
     private static final long serialVersionUID = 1L; // 版本标识符
     public String username;
     public String password;
+
     public int score;
+    public int highestscore;
     public int[][] gameState;
     public UserData(String username, String password) {
         this.username = username;
